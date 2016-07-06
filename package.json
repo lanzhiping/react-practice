@@ -4,8 +4,10 @@
         "start": "node bootstrap.js",
         "eslint": "eslint"
     },
+    "dependencies": {
+        "react": "15.1.0"
+    },
     "devDependencies": {
-        "react": "15.1.0",
         "babel": "6.5.2",
         "eslint": "2.13.1",
         "webpack": "1.13.1",
