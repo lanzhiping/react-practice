@@ -6,3 +6,7 @@ node_modules/**
 
 # build folder
 build/**
+
+# git files
+package.json
+README.md

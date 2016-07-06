@@ -1,1 +1,1 @@
-console.log("hello world! this is client side");
+console.log('hello world! this is client side');
