@@ -2,7 +2,8 @@
     "name": "react-practice",
     "scripts": {
         "start": "node bootstrap.js",
-        "eslint": "eslint"
+        "eslint": "eslint",
+        "build": "webpack"
     },
     "dependencies": {
         "react": "15.1.0"
