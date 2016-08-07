@@ -1,17 +1,17 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackAlias = require('./webpack.alias');
+const webpack = require('webpack');
 
 module.exports = [{
     entry: {
-        server: './server/index.js',
-        client: './client/index.js'
+        client: './client/index.js',
     },
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js',
         path: './build',
     },
-    watch: /\.js$/,
+    watch: ['./*.js', '!./build', '!./node_modules'],
     resolve: {
         alias: webpackAlias,
     },
@@ -22,16 +22,24 @@ module.exports = [{
                 loader: 'babel-loader',
                 exclude: /(node_modules|bower_components)/,
                 query: {
-                   presets: ['es2015']
-                }
+                    presets: ['es2015'],
+                },
             },
-        ]
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(['build'], {
             root: __dirname,
             verbose: true,
-            dry: false
+            dry: false,
         }),
-    ]
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: true,
+                dead_code: true,
+                unused: true,
+            },
+            beautify: {},
+        }),
+    ],
 }];
