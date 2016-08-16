@@ -1,12 +1,13 @@
 {
     "name": "react-practice",
     "scripts": {
-        "start": "nodemon --watch server server/index.js",
+        "start": "nodemon --watch server build/server.bundle.js",
         "eslint": "eslint ** --fix",
         "build": "webpack"
     },
     "dependencies": {
         "react": "15.1.0",
+        "react-dom": "15.1.0",
         "koa": "1.2.1",
         "koa-static": "2.0.0"
     },
@@ -14,11 +15,14 @@
         "babel": "6.5.2",
         "eslint": "2.13.1",
         "webpack": "1.13.1",
+        "webpack-node-externals": "1.3.3",
         "nodemon": "1.10.0",
 
         "babel-core": "6.13.2",
+        "babel-polyfill": "6.13.0",
         "babel-loader": "6.2.4",
         "babel-preset-es2015": "6.13.2",
+        "babel-preset-react": "6.11.1",
 
         "eslint-config-airbnb": "9.0.1",
         "eslint-plugin-import": "1.9.2",

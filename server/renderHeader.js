@@ -1,8 +1,9 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+const HtmlHeader = require('../components/header/htmlHeader');
+
 function renderHeader() {
-    return (
-        `<head>
-            <script type='text/javascript' src='/client.bundle.js'></script>
-        </head>`);
+    return ReactDOM.render(<HtmlHeader />);
 }
 
 module.exports = renderHeader;

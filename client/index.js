@@ -1,7 +1,3 @@
-const bodyView = require('bodyView');
+const a = 'aa';
 
-const log = () => {
-    console.log('hello world! this is client side', bodyView.name)
-};
-
-let var1 = "wo shi yi ge bian liang";
+console.log(`this is a client side code ${a}`);

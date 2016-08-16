@@ -1,8 +1,9 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 const webpackAlias = require('./webpack.alias');
 const webpack = require('webpack');
 
-module.exports = [{
+const clientConfig = {
     entry: {
         client: './client/index.js',
     },
@@ -11,21 +12,19 @@ module.exports = [{
         chunkFilename: '[id].chunk.js',
         path: './build',
     },
-    watch: ['./*.js', '!./build', '!./node_modules'],
+    watch: /(client|components).+\.js$/,
     resolve: {
         alias: webpackAlias,
     },
     module: {
-        loaders: [
-            {
-                test: /client.+\.js$/,
-                loader: 'babel-loader',
-                exclude: /(node_modules|bower_components)/,
-                query: {
-                    presets: ['es2015'],
-                },
+        loaders: [{
+            test: /(client|components).+\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: {
+                presets: ['react', 'es2015'],
             },
-        ],
+        }],
     },
     plugins: [
         new CleanWebpackPlugin(['build'], {
@@ -42,4 +41,34 @@ module.exports = [{
             beautify: {},
         }),
     ],
-}];
+};
+
+const serverConfig = {
+    entry: {
+        server: './server/index.js',
+    },
+    output: {
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].chunk.js',
+        path: './build',
+    },
+    watch: /(server|components).+\.js$/,
+    target: 'node',
+    externals: [nodeExternals({
+        modulesDir: 'node_modules',
+    })],
+    module: {
+        loaders: [
+            {
+                test: /(server|components).+\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['react', 'es2015'],
+                },
+            },
+        ],
+    },
+};
+
+module.exports = [serverConfig];
