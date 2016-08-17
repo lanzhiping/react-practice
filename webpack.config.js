@@ -52,11 +52,13 @@ const serverConfig = {
         chunkFilename: '[id].chunk.js',
         path: './build',
     },
-    watch: /(server|components).+\.js$/,
     target: 'node',
     externals: [nodeExternals({
         modulesDir: 'node_modules',
     })],
+    resolve: {
+        alias: webpackAlias,
+    },
     module: {
         loaders: [
             {
@@ -71,4 +73,4 @@ const serverConfig = {
     },
 };
 
-module.exports = [serverConfig];
+module.exports = [clientConfig, serverConfig];

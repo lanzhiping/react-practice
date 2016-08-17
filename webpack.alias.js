@@ -1,6 +1,15 @@
 const root = __dirname;
+const client = `${root}/client`;
+const server = `${root}/server`;
+const components = `${root}/components`;
 
 module.exports = {
-    clientIndex: `${root}/client/index.js`,
-    bodyView: `${root}/client/components/bodyView/view.js`,
+    clientIndex: `${client}/index.js`,
+
+    serverConfig: `${server}/config.js`,
+    renderBody: `${server}/renderBody.js`,
+    renderHeader: `${server}/renderHeader.js`,
+
+    htmlHeader: `${components}/header/htmlHeader.js`,
+    htmlBody: `${components}/body/htmlBody.js`,
 };

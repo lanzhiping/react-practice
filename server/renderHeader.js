@@ -1,9 +1,9 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
-const HtmlHeader = require('../components/header/htmlHeader');
+const ReactDOMServer = require('react-dom/server');
+const HtmlHeader = require('htmlHeader');
 
 function renderHeader() {
-    return ReactDOM.render(<HtmlHeader />);
+    return ReactDOMServer.renderToString(<HtmlHeader />);
 }
 
 module.exports = renderHeader;

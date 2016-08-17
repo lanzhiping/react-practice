@@ -1,9 +1,9 @@
 {
     "name": "react-practice",
     "scripts": {
-        "start": "nodemon --watch server build/server.bundle.js",
+        "start": "nodemon --watch build build/server.bundle.js",
         "eslint": "eslint ** --fix",
-        "build": "webpack"
+        "build": "webpack --watch"
     },
     "dependencies": {
         "react": "15.1.0",

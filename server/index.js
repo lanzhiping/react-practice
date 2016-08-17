@@ -1,8 +1,8 @@
 const koa = require('koa');
 const koaStatic = require('koa-static');
-const config = require('./config');
-const renderBody = require('./renderBody');
-const renderHeader = require('./renderHeader');
+const config = require('serverConfig');
+const renderBody = require('renderBody');
+const renderHeader = require('renderHeader');
 require('babel-polyfill');
 
 koa()

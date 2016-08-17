@@ -1,5 +1,9 @@
+const React = require('react');
+const ReactDomServer = require('react-dom/server');
+const HtmlBody = require('htmlBody');
+
 function renderBody() {
-    return '<body>Ni Men Hao A!</body>';
+    return ReactDomServer.renderToString(<HtmlBody />);
 }
 
 module.exports = renderBody;
