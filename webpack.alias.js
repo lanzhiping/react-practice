@@ -12,4 +12,5 @@ module.exports = {
 
     htmlHeader: `${components}/header/htmlHeader.js`,
     htmlBody: `${components}/body/htmlBody.js`,
+    navigationView: `${components}/navigation/navigationView.js`,
 };

@@ -12,7 +12,6 @@ const clientConfig = {
         chunkFilename: '[id].chunk.js',
         path: './build',
     },
-    watch: /(client|components).+\.js$/,
     resolve: {
         alias: webpackAlias,
     },
