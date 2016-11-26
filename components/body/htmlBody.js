@@ -3,12 +3,10 @@ const NavigationView = require('navigationView');
 
 function HtmlBody() {
     return (
-      <body>
-        <div>
-          Hello World!
-          <NavigationView />
-        </div>
-      </body>);
+      <div id="root">
+        Hello World!!!!
+        <NavigationView />
+      </div>);
 }
 
 module.exports = HtmlBody;
