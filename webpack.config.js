@@ -1,9 +1,15 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const webpackAlias = require('./webpack.alias');
 const webpack = require('webpack');
 
+function isProduction() {
+    return process.env.NODE_ENV === 'production';
+}
+
 const clientConfig = {
+    devtool: isProduction() ? 'cheap-module-source-map' : 'source-map',
     entry: {
         client: './client/index.js',
     },
@@ -31,12 +37,18 @@ const clientConfig = {
             verbose: true,
             dry: false,
         }),
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         NODE_ENV: process.env.NODE_ENV || 'dev',
+        //     },
+        // }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: true,
-                dead_code: true,
-                unused: true,
+                warnings: isProduction(),
+                dead_code: isProduction(),
+                unused: isProduction(),
             },
+            comments: !isProduction(),
             beautify: {},
         }),
     ],
@@ -72,4 +84,23 @@ const serverConfig = {
     },
 };
 
-module.exports = [clientConfig, serverConfig];
+const sassConfig = {
+    entry: './client/main.scss',
+    output: {
+        filename: './build/main.css',
+    },
+    resolve: {
+        extensions: ['', '.scss'],
+    },
+    module: {
+        loaders: [{
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract('style', 'css!sass'),
+        }],
+    },
+    plugins: [
+        new ExtractTextPlugin('./build/main.css'),
+    ],
+};
+
+module.exports = [clientConfig, serverConfig, sassConfig];

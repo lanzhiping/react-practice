@@ -6,8 +6,5 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const HtmlBody = require('htmlBody');
 
-ReactDOM.render(
-    <HtmlBody />,
-    document.getElementById('root')
-);
+ReactDOM.render(<HtmlBody />, document.getElementById('root'));
 
