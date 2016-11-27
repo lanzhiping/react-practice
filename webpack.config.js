@@ -12,6 +12,7 @@ const clientConfig = {
     devtool: isProduction() ? 'cheap-module-source-map' : 'source-map',
     entry: {
         client: './client/index.js',
+        backend: './backend/index.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -23,7 +24,7 @@ const clientConfig = {
     },
     module: {
         loaders: [{
-            test: /(client|components).+\.js$/,
+            test: /(client|components|backend).+\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
@@ -39,14 +40,14 @@ const clientConfig = {
         }),
         // new webpack.DefinePlugin({
         //     'process.env': {
-        //         NODE_ENV: process.env.NODE_ENV || 'dev',
+        //         NODE_ENV: process.env.NODE_ENV,
         //     },
         // }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: isProduction(),
-                dead_code: isProduction(),
-                unused: isProduction(),
+                warnings: !isProduction(),
+                dead_code: !isProduction(),
+                unused: !isProduction(),
             },
             comments: !isProduction(),
             beautify: {},

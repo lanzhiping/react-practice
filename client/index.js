@@ -1,6 +1,6 @@
 const a = 'hello world';
-
 console.log(`this is a client side code ${a}`);
+window.production = 'production';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
