@@ -10,3 +10,11 @@ build/**
 # git files
 package.json
 README.md
+
+
+# assets
+assets/**
+
+# files
+**/*.scss
+**/*.html

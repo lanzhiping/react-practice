@@ -23,9 +23,9 @@ const MenuBar = (props) => (
 
                     return (
                         <MenuItem
-                            primaryText={item.name}
-                            key={item.name.toString()}
-                            onClick={onMenuClick}
+                          primaryText={item.name}
+                          key={item.name.toString()}
+                          onClick={onMenuClick}
                         />);
                 })
             }

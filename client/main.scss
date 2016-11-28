@@ -1,3 +1,8 @@
-.navigation {
-    color: blue;
+html, body {
+    padding: 0;
+    margin: 0;
 }
+
+@import '../components/body/banner.scss';
+@import '../components/body/navigation.scss';
+@import '../components/body/carousel.scss';
