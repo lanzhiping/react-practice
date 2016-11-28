@@ -7,6 +7,7 @@ module.exports = {
     clientIndex: `${client}/index.js`,
 
     serverConfig: `${server}/config.js`,
+    appData: `${server}/appData.js`,
     renderBody: `${server}/renderBody.js`,
     renderHeader: `${server}/renderHeader.js`,
 
