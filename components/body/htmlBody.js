@@ -3,7 +3,11 @@ const NavigationView = require('navigationView');
 const appData = require('appData');
 
 function createCarousel(image) {
-    return (<a className="carousel" href={image.href}><img src={image.url} alt={image.url} /></a>);
+    return ([
+        <input key={image.url + 'input'} id={image.url} type="radio" />,
+        <a key={image.url} className="carousel" href={image.href}><img src={image.url} alt={image.url} /></a>,
+        <label key={image.url + 'label'} for={image.url} className="carousel_label" />
+    ]);
 }
 
 function Header(props) {
@@ -18,7 +22,7 @@ function Header(props) {
             </div>
         </div>
     );
-}
+} 
 
 function HtmlBody() {
     return (
