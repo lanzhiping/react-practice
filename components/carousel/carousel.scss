@@ -1,0 +1,63 @@
+@mixin arrow($direction) {
+    $arrow-color: 20px solid rgba(255,255,255,0.7);
+
+    width: 0;
+    height: 0;
+    z-index: 1;
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @if $direction == 'right' {
+        border-left: $arrow-color;
+        right: 2%;
+    }
+
+    @if $direction == 'left' {
+        border-right: $arrow-color;
+        left: 2%;
+    }
+
+    &:hover {
+        border-right-color: rgba(255,255,255,0.9);
+        border-left-color: rgba(255,255,255,0.9);
+    }
+}
+
+.carousel {
+    top: 0;
+    width: 100%;
+    position: absolute;
+    visibility: hidden;
+    text-align: center;
+
+    &_container {
+        position: relative;
+
+        &:before {
+            content: ' ';
+            display: block;
+            padding-bottom: 28%;
+        }
+    }
+
+    &-left {
+        @include arrow('left');
+    }
+
+    &-right {
+        @include arrow('right');
+    }
+
+    & img {
+        width: 99%;
+    }
+
+    &.-selected {
+        visibility: visible;
+    }
+}

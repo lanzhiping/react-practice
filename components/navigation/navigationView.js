@@ -6,7 +6,7 @@ function onNavigationClick() {
 
 function createNavigationItem(level) {
     return (item) => (
-        <div className={`nav_level${level}`}>
+        <div className={`nav_level${level}`} key={item.name}>
             <a href={item.url} >
                 {item.name}
             </a>
