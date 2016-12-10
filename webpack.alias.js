@@ -14,5 +14,6 @@ module.exports = {
     htmlHeader: `${components}/header/htmlHeader.js`,
     htmlBody: `${components}/body/htmlBody.js`,
     carousel: `${components}/carousel/carousel.js`,
+    fouseAreas: `${components}/fouseAreas/fouseAreas.js`,
     navigationView: `${components}/navigation/navigationView.js`,
 };

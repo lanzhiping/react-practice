@@ -1,5 +1,4 @@
 const React = require('react');
-// require('../../client/main.scss');
 
 function HtmlHeader() {
     return (
