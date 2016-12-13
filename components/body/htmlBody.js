@@ -3,6 +3,7 @@ const NavigationView = require('navigationView');
 const appData = require('appData');
 const Carousel = require('carousel');
 const FouseAreas = require('fouseAreas');
+const Footer = require('footer');
 
 function Header(props) {
     return (
@@ -21,6 +22,7 @@ function HtmlBody() {
       <div id="root">
         <Header logo={appData.logo} navigation={appData.navigation} carousel={appData.carousel} />
         <FouseAreas areas={appData.navigation[1].subitems} />
+        <Footer footerLinks={appData.footerLinks} />
       </div>);
 }
 

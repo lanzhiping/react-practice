@@ -16,12 +16,12 @@ koa()
     .use(koaStatic('build'))
     .use(koaStatic('backend'))
     .use(koaStatic('assets'))
-    .use(route.get('/', function *homePage() {
+    .use(route.get('/app/*', function *homePage() {
         this.res.setHeader('content-type', 'text/html; charset=utf-8');
         this.status = 200;
         this.res.write('<html>');
-        this.res.write(renderHeader());
-        this.res.write(renderBody());
+        this.res.write(renderHeader.bind(this)());
+        this.res.write(renderBody.bind(this)());
         this.res.write('</html>');
         this.res.end();
     }))
