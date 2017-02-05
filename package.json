@@ -3,7 +3,7 @@
     "scripts": {
         "start": "nodemon --watch build build/server.bundle.js",
         "eslint": "eslint ** --fix",
-        "build": "webpack --watch"
+        "build": "webpack"
     },
     "dependencies": {
         "material-ui": "0.16.4",
@@ -19,7 +19,7 @@
     "devDependencies": {
         "babel": "6.5.2",
         "eslint": "2.13.1",
-        "webpack": "1.13.1",
+        "webpack": "2.2.1",
         "webpack-node-externals": "1.3.3",
         "nodemon": "1.10.0",
 

@@ -22,6 +22,7 @@ function getPageType(req) {
 
 function renderBody() {
     console.log('```````', this.req.url)
+
     if (getPageType() === 'landing') {
         return ReactDomServer.renderToStaticMarkup(
             <body>
