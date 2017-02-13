@@ -5,6 +5,7 @@
         "react/jsx-indent": 0,
         "react/prop-types": 0,
         "no-console": ["error", { "allow": ["log"] }]
+        // "max-len": ["error", 150]
     },
     "settings": {
         "import/resolver": {
