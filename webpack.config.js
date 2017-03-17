@@ -1,37 +1,8 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
-const webpackAlias = require('./webpack.alias');
-const webpack = require('webpack');
-const isProduction = process.env.NODE_ENV === 'production';
-
-const cleanWebpackPlugin = new CleanWebpackPlugin(
-    ['build'], {
-        root: __dirname,
-        verbose: true,
-        dry: false,
-    }
-);
-
-const uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
-    compress: {
-        warnings: !isProduction,
-        dead_code: !isProduction,
-        unused: !isProduction,
-    },
-    comments: !isProduction,
-    beautify: {},
-});
-
-const webpackDefinePlugin = new webpack.DefinePlugin({
-    'process.env': {
-        NODE_ENV: process.env.NODE_ENV,
-    },
-});
 
 const reactRule = {
-    test: /\.js$/,
-    include: /(client|components|backend|server)/,
+    test: /\.jsx$/,
+    include: /(client|components)/,
     use: [{
         loader: 'babel-loader',
         options: {
@@ -46,47 +17,6 @@ const reactRule = {
             ],
         },
     }],
-};
-
-const clientConfig = {
-    entry: {
-        client: './client/index.js',
-        backend: './backend/index.js',
-    },
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[id].chunk.js',
-        path: './build',
-        publicPath: './build',
-    },
-    module: {
-        rules: [reactRule],
-    },
-    devtool: isProduction ? 'hidden-source-map' : 'eval-source-map',
-    target: 'web',
-    resolve: { alias: webpackAlias },
-    plugins: [],
-};
-
-const serverConfig = {
-    entry: {
-        server: './server/index.js',
-    },
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[id].chunk.js',
-        path: './build',
-    },
-    target: 'node',
-    externals: [nodeExternals({
-        modulesDir: 'node_modules',
-    })],
-    resolve: {
-        alias: webpackAlias,
-    },
-    module: {
-        rules: [reactRule],
-    },
 };
 
 const sassConfig = {
@@ -110,6 +40,25 @@ const sassConfig = {
     plugins: [
         new ExtractTextPlugin('./build/main.css'),
     ],
+    stats: 'minimal'
 };
 
-module.exports = [sassConfig, serverConfig, clientConfig];
+const clientConfig = {
+    entry: {
+        client: './client/index.jsx',
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: './build',
+        publicPath: './build',
+    },
+    module: {
+        rules: [reactRule],
+    },
+    devtool: 'eval-source-map',
+    target: 'web',
+    plugins: [],
+    stats: 'minimal'
+};
+
+module.exports = [clientConfig, sassConfig];
