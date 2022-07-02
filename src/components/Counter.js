@@ -1,7 +1,8 @@
-import React from "react";
+const React = require("react");
+const { useState } = require("react");
 
 const Counter = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
 
   const onClick = () => {
     setCount(count + 1);
@@ -15,4 +16,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+module.exports = Counter;

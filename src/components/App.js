@@ -1,35 +1,26 @@
-import { useEffect, useState } from 'react';
-import Counter from './Counter';
+const React = require("react");
+const Hydrating = require("./Hydrating");
 
-const LongBlog = () => {
-  const [state, setState] = useState({ Component: null });
-
-  useEffect(() => {
-    import('./LongBlog').then((result) => {
-      setState({Component: result.default})
-    })
-  }, [])
-
-  return state.Component && <state.Component />
-}
+const DynamicCounter = React.lazy(() => import("./Counter.js"));
+const DynamicLongBlog = React.lazy(() => import("./LongBlog.js"));
 
 function App() {
   return (
     <div className="App">
-       <div>
-        <h2>Interactive components</h2>
-        <Counter />
-      </div>
+      <h2>Interactive components</h2>
+      <Hydrating interactive>
+        <DynamicCounter />
+      </Hydrating>
       <br />
       <br />
       <br />
       <br />
-      <div>
-        <h2>Static components</h2>
-        <LongBlog />
-      </div>
+      <h2>Static components</h2>
+      <Hydrating>
+        <DynamicLongBlog />
+      </Hydrating>
     </div>
   );
 }
 
-export default App;
+module.exports = App;
